@@ -21,7 +21,7 @@ class CourseController {
         //   Add 
         const course = new Course(req.body);
         course.save()
-            .then(() => res.redirect(`/`))
+            .then(() => res.redirect(`/courses`))
     }
 }
 module.exports = new CourseController;

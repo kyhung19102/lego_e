@@ -6,7 +6,8 @@ class SiteController {
         Course.find({})
             .then(courses => {
                 courses = multipleObject(courses);
-                res.render('home', { courses })
+                courses = courses.length > 6 ? courses.slice(0, 6) : courses;
+                res.render('client/home', { courses, title: 'Homepage' })
             })
             .catch(error => next(error));
         // res.render('home');
