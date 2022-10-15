@@ -5,8 +5,9 @@ class AdminSiteController {
         res.render('admin/home', { title: 'my other page', layout: 'mainadmin',title:"Admin dashboard"});
     }
     // Get news/slug
-    search(req, res) {
-        res.send('search')
-    }
+    login(req,res,next)
+    {
+
+    }  
 }
 module.exports = new AdminSiteController;
