@@ -1,0 +1,19 @@
+<div class="">
+  <h3>Create New Category</h3>
+  <div class="row">
+    <a href="/admin/category" class="btn btn-success ml-auto">Back to Category List</a>
+  </div>
+  <div class="container">
+    <form method="POST" action="/courses/store">
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Add</button>
+    </form>
+  </div>
+</div>
