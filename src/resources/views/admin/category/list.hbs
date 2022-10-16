@@ -1,0 +1,107 @@
+<div class="py-4">
+  {{#if message}}
+    <div class="row">
+      <div class="alert alert-success w-100">{{message}}</div>
+    </div>
+  {{/if}}
+  <div class="row mb-4">
+    <a href="/admin/category/create" class="btn btn-success ml-auto">Create new
+      Category</a>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Category</th>
+        <th scope="col">Slug</th>
+        <th scope="col" colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {{!-- <th scope="row">{{sum @index 1}}</th> --}}
+        <th>1</th>
+        <td>Lego 1</td>
+        <td>lego-1</td>
+        <td>
+          <a href="/courses/{{this._id}}/edit" class="btn btn-dark">Edit</a>
+          <a
+            href="#"
+            class="btn btn-danger"
+            data-toggle="modal"
+            data-target="#delete-course-modal"
+            data-id="{{this._id}}"
+          >Delete</a>
+        </td>
+      </tr>
+      {{#each courses}}
+        <tr>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.name}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.slug}}</td>
+          <td>
+            <a href="/courses/{{this._id}}/edit" class="btn btn-dark">Edit</a>
+            <a
+              href="#"
+              class="btn btn-danger"
+              data-toggle="modal"
+              data-target="#delete-course-modal"
+              data-id="{{this._id}}"
+            >Delete</a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+{{! Confirm delete course }}
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="delete-course-modal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Notice</h1>
+      </div>
+      <div class="modal-body">
+        The information will be delete after accepted. Do you want to continue ?
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-dismiss="modal"
+          id="btn-delete-course"
+        >Delete</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >Cancle</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{! Delete hidden form }}
+<form method="POST" name="delete-course-form"></form>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){ var courseId; let
+  deleteForm = document.forms['delete-course-form']
+  $('#delete-course-modal').on('show.bs.modal', function (event) { var button =
+  $(event.relatedTarget) // Button that triggered the modal courseId =
+  button.data('id') // Extract info from data-* attributes // If necessary, you
+  could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data
+  binding library or other methods instead. }); var btnDelete =
+  document.getElementById('btn-delete-course'); btnDelete.onclick= function(){
+  deleteForm.action='/courses/'+ courseId +'?_method=DELETE';
+  deleteForm.submit(); } })
+</script>
