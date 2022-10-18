@@ -1,0 +1,48 @@
+<div class="collection_section layout_padding">
+  <div class="container">
+    <h1 class="new_text text-center"><strong>Our Products</strong></h1>
+    <p class="consectetur_text">LEGO® building has taken on a new form with
+      LEGO® BOOST. These customisable and programmable robot toys help your
+      child learn coding and STEM skills while bringing their creations to life
+      with simple coding commands.</p>
+  </div>
+</div>
+<!-- new collection section end -->
+<!-- New Arrivals section start -->
+<div class="layout_padding gallery_section">
+  <div class="container">
+    <div class="row">
+      {{#each products}}
+        <div class="col-sm-4">
+          <div class="best_shoes">
+            <a href="">
+              <p class="best_text">{{this.name}}</p>
+            </a>
+            <a href="" class="shoes_icon w-100"><img
+                src="{{this.image}}"
+                class="shoes-image"
+              /></a>
+            <div class="star_text">
+              <div class="left_part">
+                <ul>
+                  <li><a href="#"><img src="images/star-icon.png" /></a></li>
+                  <li><a href="#"><img src="images/star-icon.png" /></a></li>
+                  <li><a href="#"><img src="images/star-icon.png" /></a></li>
+                  <li><a href="#"><img src="images/star-icon.png" /></a></li>
+                  <li><a href="#"><img src="images/star-icon.png" /></a></li>
+                </ul>
+              </div>
+              <div class="right_part">
+                <div class="shoes_price">$
+                  <span style="color: #ff4e5b;">{{this.price}}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+    <div class="buy_now_bt mt-4">
+      <a href="" class="buy_text p-2">Buy Now</a>
+    </div>
+  </div>
+</div>

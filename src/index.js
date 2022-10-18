@@ -1,11 +1,13 @@
 const path = require('path')
 const express = require('express');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser')
 const hbs = require('express-handlebars')
 const app = express();
 
-const  methodOverride = require('method-override')
+const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
+app.use(cookieParser())
 const port = 3000;
 const db = require('./config/db');
 const route = require('./routes');
@@ -26,8 +28,11 @@ app.use(morgan('combined'))
 app.engine('hbs', hbs.engine({
     extname: '.hbs',
     helpers: {
-        sum: (a, b) => a + b
-    }
+        sum: (a, b) => a + b,
+        option: (selected, option) => (selected == option) ? 'selected="selected"' : '',
+       
+    },
+
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
