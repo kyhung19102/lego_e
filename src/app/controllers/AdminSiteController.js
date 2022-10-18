@@ -17,13 +17,17 @@ class AdminSiteController {
         User.findOne({ username, password })
             .then(data => {
                 if (data) {
-                    res.cookie('userId',data.id);
-                   res.redirect('/admin/')
+                    res.cookie('userId', data.id);
+                    res.redirect('/admin/')
                 }
                 else {
-                    res.render('admin/login', { layout: '', errors:"Please check again username and password", oldData: req.body});
+                    res.render('admin/login', { layout: '', errors: "Please check again username and password", oldData: req.body });
                 }
             })
+    }
+    logout(req, res, next) {
+        res.clearCookie('userId')
+        res.redirect('/admin/login');
     }
 
 }

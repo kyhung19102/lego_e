@@ -8,14 +8,11 @@ class CollectionController {
         // req.params.slug
         Product.find({})
             .then(products => {
-                res.render('client/collection', { products: multipleObject(products) })
+                res.render('client/collection', { products: multipleObject(products), title: "Collection" })
             }).catch(next);
         // res.send(req.params.slug);
     }
     // Get
-    detail(req,res,next)
-    {
 
-    }
 }
 module.exports = new CollectionController;

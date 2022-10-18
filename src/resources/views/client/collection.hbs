@@ -15,14 +15,14 @@
       {{#each products}}
         <div class="col-sm-4">
           <div class="best_shoes">
-            <a href="">
-              <p class="best_text">{{this.name}}</p>
+            <a href="/detail/{{this._id}}">
+              <p class="best_text font-weight-bold">{{this.name}}</p>
             </a>
-            <a href="" class="shoes_icon w-100"><img
+            <a href="/detail/{{this._id}}" class="shoes_icon w-100"><img
                 src="{{this.image}}"
                 class="shoes-image"
               /></a>
-            <div class="star_text">
+            <div class="star_text py-4">
               <div class="left_part">
                 <ul>
                   <li><a href="#"><img src="images/star-icon.png" /></a></li>
@@ -33,7 +33,7 @@
                 </ul>
               </div>
               <div class="right_part">
-                <div class="shoes_price">$
+                <div class="shoes_price font-weight-bold">$
                   <span style="color: #ff4e5b;">{{this.price}}</span></div>
               </div>
             </div>
@@ -42,7 +42,6 @@
       {{/each}}
     </div>
     <div class="buy_now_bt mt-4">
-      <a href="" class="buy_text p-2">Buy Now</a>
     </div>
   </div>
 </div>
