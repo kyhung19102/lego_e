@@ -46,10 +46,10 @@
       {{#each products}}
         <div class="col-sm-4">
           <div class="best_shoes">
-            <a href="">
+            <a href="/detail/{{this._id}}">
               <p class="best_text">{{this.name}}</p>
             </a>
-            <a href="" class="shoes_icon w-100"><img
+            <a href="/detail/{{this._id}}" class="shoes_icon w-100"><img
                 src="{{this.image}}"
                 class="shoes-image"
               /></a>
@@ -73,7 +73,7 @@
       {{/each}}
     </div>
     <div class="buy_now_bt mt-4">
-      <a href="" class="buy_text p-2">Buy Now</a>
+      <a href="/collection" class="buy_text p-4">View more</a>
     </div>
   </div>
 </div>

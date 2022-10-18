@@ -17,5 +17,25 @@ class SiteController {
     search(req, res) {
         res.send('search')
     }
+    detail(req, res, next) {
+        Product.findOne({ _id: req.params.id })
+            .then(product => {
+                res.render('client/detail', { product: singleObject(product) })
+            }).catch(next);
+    }
+    loginForm(req, res, next) {
+        res.render('client/login');
+    }
+    login(req,res,next)
+    {
+
+    }
+    registForm(req, res, next) {
+        res.render('client/regist');
+    }
+    regist(req,res,next)
+    {
+
+    }
 }
 module.exports = new SiteController;
