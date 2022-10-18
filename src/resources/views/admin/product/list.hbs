@@ -5,26 +5,32 @@
     </div>
   {{/if}}
   <div class="row mb-4">
-    <a href="/admin/category/create" class="btn btn-success ml-auto">Create new
-      Category</a>
+    <a href="/admin/product/create" class="btn btn-success ml-auto">Create new
+      Product</a>
   </div>
   <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Category</th>
-        <th scope="col">Slug</th>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col" width="20%">Description</th>
+        <th scope="col">Price</th>
         <th scope="col" colspan="2">Action</th>
       </tr>
     </thead>
     <tbody>
-      {{#each categories}}
+      {{#each products}}
         <tr>
           <th scope="row">{{sum @index 1}}</th>
+          <td><img src='../{{this.image}}' alt="" style={
+             width="50px"; height="50px"; object-fit="cover";
+          }></td>
           <td>{{this.name}}</td>
-          <td>{{this.slug}}</td>
+          <td>{{this.description}}</td>
+          <td>{{this.price}}</td>
           <td>
-            <a href="/admin/category/{{this._id}}/edit" class="btn btn-dark">Edit</a>
+            <a href="/admin/product/{{this._id}}/edit" class="btn btn-dark">Edit</a>
             <a
               href="#"
               class="btn btn-danger"
@@ -87,7 +93,7 @@
   });
   var btnDelete = document.getElementById('btn-delete-course');
   btnDelete.onclick= function(){
-      deleteForm.action='/admin/category/'+ courseId +'?_method=DELETE';
+      deleteForm.action='/admin/product/'+ id +'?_method=DELETE';
       deleteForm.submit();
   }
 })

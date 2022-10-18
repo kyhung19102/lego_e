@@ -14,28 +14,32 @@
   <body>
     <div class="container mt-5">
       <h2 class="text-center mb-5">Admin login</h2>
-   
-        <form>
-          <!-- Email input -->
-          <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example1">username</label>
-            <input id="form2Example1" class="form-control" type="text" name="username"/>
-            {{#if errors.username}}
-            <p class="text-danger mt-2 text-bold">{{errors.username}}</p>
-            {{/if}}
-          </div>
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example2">Password</label>
-            <input type="password" id="form2Example2" class="form-control" name="password" />
-             {{#if errors.password}}
-            <p class="text-danger mt-2 text-bold">{{errors.username}}</p>
-            {{/if}}
-          </div>
+      {{#if errors}}
+      <div class="alert alert-danger my-4">{{errors}}</div>
+      {{/if}} 
+      <form method="POST" action="/admin/login">
+        <div class="form-outline mb-4">
+          <label class="form-label" for="form2Example1">username</label>
+          <input
+            id="form2Example1"
+            class="form-control"
+            type="text"
+            name="username"
+            value = {{oldData.username}}>
 
-          <a type="button" class="btn btn-primary btn-block mb-4">Sign in</a>
-        </form>
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <label class="form-label" for="form2Example2">Password</label>
+          <input
+            type="password"
+            id="form2Example2"
+            class="form-control"
+            name="password"
+          />
+        </div>
 
+        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+      </form>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

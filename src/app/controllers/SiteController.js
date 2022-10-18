@@ -1,13 +1,14 @@
-const Course = require('../models/Course');
+const Product = require('../models/Product');
 const { multipleObject, singleObject } = require('../../util/mongoose');
+
 class SiteController {
     index(req, res, next) {
 
-        Course.find({})
-            .then(courses => {
-                courses = multipleObject(courses);
-                courses = courses.length > 6 ? courses.slice(0, 6) : courses;
-                res.render('client/home', { courses, title: 'Homepage' })
+        Product.find({})
+            .then(products => {
+                products = multipleObject(products);
+                products = products.length > 6 ? products.slice(0, 6) : products;
+                res.render('client/home', { products, title: 'Homepage' })
             })
             .catch(error => next(error));
         // res.render('home');
