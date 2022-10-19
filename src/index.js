@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser')
+const session = require('express-session')
 const hbs = require('express-handlebars')
 const app = express();
 const env = require('dotenv');
@@ -32,6 +33,16 @@ app.engine('hbs', hbs.engine({
     helpers: {
         sum: (a, b) => a + b,
         option: (selected, option) => (selected == option) ? 'selected="selected"' : '',
+        user: (req, res)=>{
+            let name = req.cookies.customerName;
+            if(name) {
+                return {
+                    name:name
+                }
+            }
+            return false;
+        }
+
     },
 
 }));
@@ -45,3 +56,7 @@ db.connect();
 app.listen(port, () => {
     console.log(` app listening on port ${port}`)
 })
+
+app.use(session({
+    
+  }))
