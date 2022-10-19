@@ -1,10 +1,13 @@
 
     <div class="container mt-5">
       <h2 class="text-center mb-5 font-weight-bold">Customer Login</h2>
+      {{#if successMessage}}
+       <div class="alert alert-success my-4">{{successMessage}}</div>
+      {{/if}}
       {{#if errors}}
       <div class="alert alert-danger my-4">{{errors}}</div>
       {{/if}} 
-      <form method="POST" action="/admin/login">
+      <form method="POST" action="/login">
         <div class="form-outline mb-4">
           <label class="form-label" for="form2Example1">username</label>
           <input

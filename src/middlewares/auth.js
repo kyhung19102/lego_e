@@ -1,3 +1,4 @@
+// Admin Auth
 module.exports.requireAuth = function(req,res,next){
     if(!req.cookies.userId)
     {
@@ -14,3 +15,4 @@ module.exports.checkAuth = function(req,res,next){
     }
     next();
 }
+// User Auth
