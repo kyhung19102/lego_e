@@ -4,11 +4,11 @@ const morgan = require('morgan');
 const cookieParser = require('cookie-parser')
 const hbs = require('express-handlebars')
 const app = express();
-
+const env = require('dotenv');
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 app.use(cookieParser())
-const port = 3000;
+
 const db = require('./config/db');
 const route = require('./routes');
 // Installation
@@ -18,6 +18,8 @@ Morgan:  log http request
 express-handlebars: template
 * */
 // 
+env.config()
+const port = process.env.PORT;
 app.use(express.urlencoded({
     extended: true
 }));
