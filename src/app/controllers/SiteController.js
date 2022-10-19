@@ -34,7 +34,7 @@ class SiteController {
                 if (data) {
                     res.cookie('customerid', data.id);
                     res.cookie('customerName', data.name);
-                    res.render('/',{username: data.name})
+                    res.render('client/home', { username: data.name })
                 }
                 else {
                     res.render('client/login', { errors: "Please check again username and password", oldData: req.body });
