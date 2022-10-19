@@ -10,7 +10,7 @@ function route(app) {
     // Admin route
     // 404
     app.use((req, res, next) => {
-        res.status(404).render('404',{layout:""});
+        res.status(404).render('404', { layout: "" });
     });
 }
 module.exports = route;

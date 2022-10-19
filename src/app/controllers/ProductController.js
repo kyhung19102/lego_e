@@ -26,6 +26,7 @@ class ProductController {
             errors.price = "This field is required";
         }
         let size = Object.keys(errors).length;
+       
         if (size > 0) {
             Category.find({}).then(categories => res.render("admin/product/create", { layout: 'mainadmin', title: "Add new Product", categories: multipleObject(categories), errors: errors })).catch(next);
         }

@@ -30,7 +30,6 @@ app.engine('hbs', hbs.engine({
     helpers: {
         sum: (a, b) => a + b,
         option: (selected, option) => (selected == option) ? 'selected="selected"' : '',
-       
     },
 
 }));
