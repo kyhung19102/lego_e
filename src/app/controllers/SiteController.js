@@ -29,7 +29,7 @@ class SiteController {
     }
     login(req, res, next) {
         let username = req.body.username;
-        let password = req.body.password;
+        let password = md5(req.body.password);
         Customer.findOne({ username, password })
             .then(data => {
                 if (data) {
