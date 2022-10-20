@@ -13,6 +13,7 @@ app.use(cookieParser())
 const db = require('./config/db');
 const route = require('./routes');
 // Installation
+
 /*
 Nodemon : auto reset;
 Morgan:  log http request
@@ -33,11 +34,11 @@ app.engine('hbs', hbs.engine({
     helpers: {
         sum: (a, b) => a + b,
         option: (selected, option) => (selected == option) ? 'selected="selected"' : '',
-        user: (req, res)=>{
+        user: (req, res) => {
             let name = req.cookies.customerName;
-            if(name) {
+            if (name) {
                 return {
-                    name:name
+                    name: name
                 }
             }
             return false;
@@ -58,5 +59,5 @@ app.listen(port, () => {
 })
 
 app.use(session({
-    
+
 }))
