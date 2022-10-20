@@ -5,12 +5,12 @@ const { multipleObject, singleObject } = require('../../util/mongoose');
 
 class SiteController {
     index(req, res, next) {
-        let userName = req.cookies.customerName ? req.cookies.customerName : " ";
+
         Product.find({})
             .then(products => {
                 products = multipleObject(products);
                 products = products.length > 6 ? products.slice(0, 6) : products;
-                res.render('client/home', { products, title: 'Homepage', userName: userName })
+                res.render('client/home', { products, title: 'Homepage', username: req.cookies.customerName })
             }).catch(next);
     }
     // Get news/slug
@@ -20,11 +20,12 @@ class SiteController {
     detail(req, res, next) {
         Product.findOne({ _id: req.params.id })
             .then(product => {
-                res.render('client/detail', { product: singleObject(product) })
+                res.render('client/detail', { product: singleObject(product), username: req.cookies.customerName })
             }).catch(next);
     }
     loginForm(req, res, next) {
-        res.render('client/login');
+
+        res.render('client/login')
     }
     login(req, res, next) {
         let username = req.body.username;
@@ -34,7 +35,8 @@ class SiteController {
                 if (data) {
                     res.cookie('customerid', data.id);
                     res.cookie('customerName', data.name);
-                    res.render('client/home', { username: data.name })
+                    // res.session.customerName = data.name;
+                    res.redirect('/')
                 }
                 else {
                     res.render('client/login', { errors: "Please check again username and password", oldData: req.body });
@@ -78,5 +80,11 @@ class SiteController {
             }).catch(next);
         }
     }
+    logout(req, res, next) {
+        res.clearCookie('customerid');
+        res.clearCookie('customerName');
+        res.redirect('/');
+    }
+
 }
 module.exports = new SiteController;

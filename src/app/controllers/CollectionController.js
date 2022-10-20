@@ -5,10 +5,11 @@ const { multipleObject, singleObject, slugify } = require('../../util/mongoose')
 class CollectionController {
     // courses/:slug
     show(req, res, next) {
+    
         // req.params.slug
         Product.find({})
             .then(products => {
-                res.render('client/collection', { products: multipleObject(products), title: "Collection" })
+                res.render('client/collection', { products: multipleObject(products), title: "Collection",username:req.cookies.customerName})
             }).catch(next);
         // res.send(req.params.slug);
     }
