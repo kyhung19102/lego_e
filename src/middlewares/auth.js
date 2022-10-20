@@ -15,5 +15,13 @@ module.exports.checkAuth = function(req,res,next){
     }
     next();
 }
-
 // User Auth
+module.exports.checkAuthUser = function(req,res,next)
+{
+    if(req.cookies.customerid)
+    {
+        res.redirect('/')
+        return;
+    }
+    next();
+}

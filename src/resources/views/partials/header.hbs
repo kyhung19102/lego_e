@@ -23,15 +23,13 @@
               <a class="nav-item nav-link" href="/collection">Collection</a>
               <a class="nav-item nav-link" href="">About</a>
               <a class="nav-item nav-link" href="">Contact</a>
-              {{#if user.name}}
-                <a class="nav-item nav-link" href="">{{user.name}}</a>
+              {{#if username}}
+                <a class="nav-item nav-link" href="" class="w">{{username}}</a>
+                <a class="nav-item nav-link" href="/logout">Logout</a>
               {{else}}
                 <a class="nav-item nav-link" href="/regist">Regist</a>
                 <a class="nav-item nav-link" href="/login">Login</a>
               {{/if}}
-              <a class="nav-item nav-link last" href="#"><img
-                  src="/images/search_icon.png"
-                /></a>
 
               <a class="nav-item nav-link last" href="contact.html"><img
                   src="/images/shop_icon.png"
