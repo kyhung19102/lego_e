@@ -25,3 +25,4 @@ module.exports.checkAuthUser = function(req,res,next)
     }
     next();
 }
+// Viết 1 cái auth là nó đăng nhập r thì chuyển qua cái khác ... 

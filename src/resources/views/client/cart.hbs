@@ -1,0 +1,94 @@
+<div class="cart_area section_padding_100 clearfix mt-5">
+  <div class="container">
+    {{#if products}}
+      <div class="row">
+        <div class="col-12">
+          <div class="cart-table clearfix">
+            <table class="table table-responsive">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th width="30%">Name</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each products}}
+                  <tr>
+                    <td class="cart_product_img d-flex align-items-center">
+                      <a href="#"><img src="/{{this.item.image}}" alt="Product" /></a>
+
+                    </td>
+                    <td width="40%"><p>{{this.item.name}}</p></td>
+                    <td class="price"><span>${{this.item.price}}</span></td>
+                    <td class="qty">
+                      <div class="quantity">
+                        <span
+                          class="qty-minus"
+                          onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"
+                        ><i
+                            class="fa fa-minus"
+                            aria-hidden="true"
+                          ></i></span>
+                        <input
+                          type="number"
+                          class="qty-text"
+                          id="qty"
+                          step="1"
+                          min="1"
+                          max="99"
+                          name="quantity"
+                          value="{{this.qty}}"
+                        />
+                        <span
+                          class="qty-plus"
+                          onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"
+                        ><i class="fa fa-plus" aria-hidden="true"></i></span>
+                      </div>
+                    </td>
+                    <td class="total_price"><span
+                      >${{this.totalPrice}}</span></td>
+                  </tr>
+                {{/each}}
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="cart-footer d-flex mt-30">
+            <a href="/" class="alert alert-success">Back to HomePage</a>
+            <div class="update-checkout w-50 text-right">
+              <a href="#">clear cart</a>
+              <a href="#">Update cart</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-12 col-lg-12 mb-5">
+          <div class="cart-total-area mt-70">
+            <div class="cart-page-heading">
+              <h5>Cart total</h5>
+            </div>
+            <ul class="cart-total-chart w-100">
+              <li><span>Subtotal</span> <span>${{totalPrice}}</span></li>
+              <li><span>Shipping</span> <span>Free</span></li>
+              <li><span><strong>Total</strong></span>
+                <span><strong>${{totalPrice}}</strong></span></li>
+            </ul>
+            <a href="checkout.html" class="btn karl-checkout-btn">Proceed to
+              checkout</a>
+          </div>
+        </div>
+      </div>
+      {{else}}
+      <div class="alert alert-info">Nothing in your cart</div>
+    {{/if}}
+
+  </div>
+</div>
