@@ -1,11 +1,11 @@
 const Product = require('../models/Product');
 const Customer = require('../models/Customer');
+const store = require("store2");
 const md5 = require('md5');
 const { multipleObject, singleObject } = require('../../util/mongoose');
 
 class SiteController {
     index(req, res, next) {
-
         Product.find({})
             .then(products => {
                 products = multipleObject(products);
@@ -35,7 +35,7 @@ class SiteController {
                 if (data) {
                     res.cookie('customerid', data.id);
                     res.cookie('customerName', data.name);
-                    // res.session.customerName = data.name;
+                    req.session.cart = { items: {}, totalQty: 0, totalPrice: 0 };
                     res.redirect('/')
                 }
                 else {
@@ -83,8 +83,12 @@ class SiteController {
     logout(req, res, next) {
         res.clearCookie('customerid');
         res.clearCookie('customerName');
+        req.session.destroy((err) => {
+            if (err) {
+                return console.log(err);
+            }
+        })
         res.redirect('/');
     }
-
 }
 module.exports = new SiteController;

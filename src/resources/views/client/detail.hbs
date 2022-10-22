@@ -23,8 +23,7 @@
         <p class="text-capitalize font-weight-bold">Quantity</p>
         <input type="number" min="0" max="10" value="1" style="width:40px; height: 35px;">
         </div>
-        <div class="btn btn-danger w-100 py-3 mt-auto">Add to Cart</div>
-
+        <a href="/cart/{{product._id}}"class="btn btn-danger w-100 py-3 mt-auto" data-id='{{product._id}}' id="addtocart">Add to Cart</a>
     </div>
   </div>
 </div>

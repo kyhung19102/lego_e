@@ -3,8 +3,10 @@ const router = express.Router()
 const siteController = require('../app/controllers/SiteController');
 const collectionRouter = require('./collection')
 const authCustomer = require('../middlewares/auth')
+const cartRouter = require('./cart');
 router.get('/search', siteController.search);
 router.use('/collection', collectionRouter);
+router.use('/cart', cartRouter);
 router.get('/detail/:id', siteController.detail);
 router.get('/login', authCustomer.checkAuthUser, siteController.loginForm);
 router.post('/login', authCustomer.checkAuthUser, siteController.login);

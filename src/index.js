@@ -5,13 +5,19 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const hbs = require('express-handlebars')
 const app = express();
+
 const env = require('dotenv');
 const methodOverride = require('method-override')
 app.use(methodOverride('_method'))
 app.use(cookieParser())
-
 const db = require('./config/db');
 const route = require('./routes');
+app.use(session({
+    resave: false,
+    saveUninitialized: false,
+    secret: 'somesecret',
+    cookie: {  maxAge: 24 * 60 * 60 * 1000}
+}));
 // Installation
 
 /*
@@ -43,10 +49,10 @@ app.engine('hbs', hbs.engine({
             }
             return false;
         }
-
     },
 
 }));
+
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -57,7 +63,3 @@ db.connect();
 app.listen(port, () => {
     console.log(` app listening on port ${port}`)
 })
-
-app.use(session({
-
-}))
